@@ -29,7 +29,6 @@ int main() {
   UniformSampler sampler;
   integrator.build(scene, sampler);
 
-  spdlog::info("[main] tracing rays from camera");
 #pragma omp parallel for collapse(2) schedule(dynamic, 1)
   for (int i = 0; i < height; ++i) {
     for (int j = 0; j < width; ++j) {
@@ -48,10 +47,8 @@ int main() {
 
           if (std::isnan(radiance[0]) || std::isnan(radiance[1]) ||
               std::isnan(radiance[2])) {
-            spdlog::error("radiance is NaN");
             continue;
           } else if (radiance[0] < 0 || radiance[1] < 0 || radiance[2] < 0) {
-            spdlog::error("radiance is minus");
             continue;
           }
 

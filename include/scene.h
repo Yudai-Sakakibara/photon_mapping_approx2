@@ -1,7 +1,6 @@
 #ifndef _SCENE_H
 #define _SCENE_H
 #include <embree3/rtcore.h>
-#include <spdlog/spdlog.h>
 
 #include <filesystem>
 #include <memory>
@@ -109,7 +108,6 @@ class Scene {
   void loadModel(const std::filesystem::path& filepath) {
     clear();
 
-    spdlog::info("[Scene] loading: {}", filepath.generic_string());
 
     tinyobj::ObjReaderConfig reader_config;
     reader_config.mtl_search_path = "./";
@@ -118,14 +116,11 @@ class Scene {
     tinyobj::ObjReader reader;
     if (!reader.ParseFromFile(filepath.generic_string(), reader_config)) {
       if (!reader.Error().empty()) {
-        spdlog::error("[Scene] failed to load {} : {}",
-                      filepath.generic_string(), reader.Error());
       }
       return;
     }
 
     if (!reader.Warning().empty()) {
-      spdlog::warn("[Scene] {}", reader.Warning());
     }
 
     const auto& attrib = reader.GetAttrib();
@@ -264,16 +259,12 @@ class Scene {
                               light);
     }
 
-    spdlog::info("[Scene] vertices: {}", nVertices());
-    spdlog::info("[Scene] faces: {}", nFaces());
-    spdlog::info("[Scene] lights: {}", lights.size());
   }
 
   uint32_t nVertices() const { return vertices.size() / 3; }
   uint32_t nFaces() const { return indices.size() / 3; }
 
   void build() {
-    spdlog::info("[Scene] building scene...");
 
     // setup embree
     device = rtcNewDevice(NULL);

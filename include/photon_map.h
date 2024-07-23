@@ -200,7 +200,6 @@ class PhotonMap {
   }
 
   void build() {
-    spdlog::info("[PhotonMap] photons: {}", photons.size());
     kdtree.setPoints(photons.data(), photons.size());
     kdtree.buildTree();
   }

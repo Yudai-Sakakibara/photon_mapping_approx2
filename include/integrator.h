@@ -40,7 +40,6 @@ class Integrator {
     } else if (transport_dir == TransportDirection::FROM_LIGHT) {
       return std::abs(wo_ns) * std::abs(wi_ng) / std::abs(wo_ng);
     } else {
-      spdlog::error("invalid transport direction");
       std::exit(EXIT_FAILURE);
     }
   }
@@ -366,7 +365,6 @@ class PhotonMapping : public Integrator {
           return Lo;
         }
       } else {
-        spdlog::error("[PhotonMapping] invalid BxDF type");
         return Vec3f(0);
       }
     } else {
@@ -402,7 +400,6 @@ class PhotonMapping : public Integrator {
 
     // build global photon map
     // photon tracing
-    spdlog::info("[PhotonMapping] tracing photons to build global photon map");
 #pragma omp parallel for
     for (int i = 0; i < nPhotonsGlobal; ++i) {
       auto& sampler_per_thread = *samplers[omp_get_thread_num()];
@@ -417,11 +414,9 @@ class PhotonMapping : public Integrator {
       for (int k = 0; k < maxDepth; ++k) {
         if (std::isnan(throughput[0]) || std::isnan(throughput[1]) ||
             std::isnan(throughput[2])) {
-          spdlog::error("[PhotonMapping] photon throughput is NaN");
           break;
         } else if (throughput[0] < 0 || throughput[1] < 0 ||
                    throughput[2] < 0) {
-          spdlog::error("[PhotonMapping] photon throughput is minus");
           break;
         }
 
@@ -469,7 +464,6 @@ class PhotonMapping : public Integrator {
     }
 
     // build photon map
-    spdlog::info("[PhotonMapping] building global photon map");
     globalPhotonMap.setPhotons(photons);
     globalPhotonMap.build();
 
@@ -478,8 +472,6 @@ class PhotonMapping : public Integrator {
       photons.clear();
 
       // photon tracing
-      spdlog::info(
-          "[PhotonMapping] tracing photons to build caustics photon map");
 #pragma omp parallel for
       for (int i = 0; i < nPhotonsCaustics; ++i) {
         auto& sampler_per_thread = *samplers[omp_get_thread_num()];
@@ -494,11 +486,9 @@ class PhotonMapping : public Integrator {
         for (int k = 0; k < maxDepth; ++k) {
           if (std::isnan(throughput[0]) || std::isnan(throughput[1]) ||
               std::isnan(throughput[2])) {
-            spdlog::error("[PhotonMapping] photon throughput is NaN");
             break;
           } else if (throughput[0] < 0 || throughput[1] < 0 ||
                      throughput[2] < 0) {
-            spdlog::error("[PhotonMapping] photon throughput is minus");
             break;
           }
 
@@ -557,7 +547,6 @@ class PhotonMapping : public Integrator {
         }
       }
 
-      spdlog::info("[PhotonMapping] building caustics photon map");
       causticsPhotonMap.setPhotons(photons);
       causticsPhotonMap.build();
     }
