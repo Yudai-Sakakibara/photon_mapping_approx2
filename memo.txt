@@ -1,5 +1,5 @@
 コンパイル　buildディレクトリにおいて、
-cmake -D CMAKE_BUILD_TYPE=Release .. -D embree_DIR=/home/sakakibara/embree-3.13.5.x86_64.linux/lib/cmake/embree-3.13.5/  \
+cmake -D CMAKE_BUILD_TYPE=Release .. -D embree_DIR=/home/sakakibara/embree-3.13.5.x86_64.linux/lib/cmake/embree-3.13.5  \
 make
 
 

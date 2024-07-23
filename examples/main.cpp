@@ -19,7 +19,7 @@ int main() {
   Camera camera(Vec3f(0, 1, 6), Vec3f(0, 0, -1), 0.25 * PI);
 
   Scene scene;
-  scene.loadModel("cornellbox-water2.obj");
+  scene.loadModel("models/cornellbox-water2.obj");
   scene.build();
 
   // photon tracing and build photon map
@@ -45,6 +45,7 @@ int main() {
           const Vec3f radiance =
               integrator.integrate(ray, scene, sampler) / pdf;
 
+
           if (std::isnan(radiance[0]) || std::isnan(radiance[1]) ||
               std::isnan(radiance[2])) {
             continue;
@@ -56,6 +57,10 @@ int main() {
         } else {
           image.setPixel(i, j, Vec3f(0));
         }
+      }
+      // progress check
+      if(j == width - 1){
+        printf("[main] %d of %d lines finished.\n", i + 1, height);
       }
     }
   }
