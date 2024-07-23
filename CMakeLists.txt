@@ -5,11 +5,7 @@ option(BUILD_TESTS "build tests" OFF)
 
 # spdlog is unnecessary
 
-# OpenMP
-find_package(OpenMP)
-if(NOT OpenMP_CXX_FOUND)
-    message(WARNING "failed to find OpenMP")
-endif()
+# OpenMP is unnecessary
 
 # Embree3
 find_package(embree 3.0 REQUIRED)
@@ -29,7 +25,7 @@ target_compile_features(pm INTERFACE cxx_std_20)
 set_target_properties(pm PROPERTIES CXX_EXTENSIONS OFF)
 
 # target_link_libraries(pm INTERFACE spdlog::spdlog)
-target_link_libraries(pm INTERFACE OpenMP::OpenMP_CXX)
+# target_link_libraries(pm INTERFACE OpenMP::OpenMP_CXX)
 target_link_libraries(pm INTERFACE tinyobjloader)
 target_link_libraries(pm INTERFACE embree)
 
