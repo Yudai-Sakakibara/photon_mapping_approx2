@@ -29,7 +29,6 @@ int main() {
   UniformSampler sampler;
   integrator.build(scene, sampler);
 
-#pragma omp parallel for collapse(2) schedule(dynamic, 1)
   for (int i = 0; i < height; ++i) {
     for (int j = 0; j < width; ++j) {
       // init sampler

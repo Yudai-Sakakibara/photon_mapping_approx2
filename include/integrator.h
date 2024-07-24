@@ -1,6 +1,5 @@
 #ifndef _INTEGRATOR_H
 #define _INTEGRATOR_H
-#include <omp.h>
 
 #include <optional>
 
@@ -392,7 +391,7 @@ class PhotonMapping : public Integrator {
     std::vector<Photon> photons;
 
     // init sampler for each thread
-    std::vector<std::unique_ptr<Sampler>> samplers(omp_get_max_threads());
+    std::vector<std::unique_ptr<Sampler>> samplers(1);
     for (int i = 0; i < samplers.size(); ++i) {
       samplers[i] = sampler.clone();
       samplers[i]->setSeed(samplers[i]->getSeed() * (i + 1));
@@ -400,9 +399,8 @@ class PhotonMapping : public Integrator {
 
     // build global photon map
     // photon tracing
-#pragma omp parallel for
     for (int i = 0; i < nPhotonsGlobal; ++i) {
-      auto& sampler_per_thread = *samplers[omp_get_thread_num()];
+      auto& sampler_per_thread = *samplers[0];
 
       // sample initial ray from light and set initial throughput
       Vec3f throughput;
@@ -425,7 +423,6 @@ class PhotonMapping : public Integrator {
           const BxDFType bxdf_type = info.hitPrimitive->getBxDFType();
           if (bxdf_type == BxDFType::DIFFUSE) {
             // TODO: remove lock to get more speed
-#pragma omp critical
             {
               photons.emplace_back(throughput, info.surfaceInfo.position,
                                    -ray.direction);
@@ -472,9 +469,8 @@ class PhotonMapping : public Integrator {
       photons.clear();
 
       // photon tracing
-#pragma omp parallel for
       for (int i = 0; i < nPhotonsCaustics; ++i) {
-        auto& sampler_per_thread = *samplers[omp_get_thread_num()];
+        auto& sampler_per_thread = *samplers[0];
 
         // sample initial ray from light and set initial throughput
         Vec3f throughput;
@@ -504,7 +500,6 @@ class PhotonMapping : public Integrator {
             // add photon when hitting diffuse surface after specular
             if (prev_specular && bxdf_type == BxDFType::DIFFUSE) {
               // TODO: remove lock to get more speed
-#pragma omp critical
               {
                 photons.emplace_back(throughput, info.surfaceInfo.position,
                                      -ray.direction);
