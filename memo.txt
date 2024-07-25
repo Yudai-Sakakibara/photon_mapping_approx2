@@ -14,4 +14,11 @@ cmake .. -D CMAKE_BUILD_TYPE=Release -D embree_DIR=/home/sakakibara/photon_mappi
 cmake .. -D CMAKE_BUILD_TYPE=Release -D embree_DIR=/home/sakakibara/embree-3.13.5.x86_64.linux/lib/cmake/embree-3.13.5 -D TBB_DIR=/usr/lib/x86_64-linux-gnu/cmake/TBB -C ../compiler.cmake
 
 
-cmake .. -D CMAKE_BUILD_TYPE=Release -D embree_DIR=/home/sakakibara/photon_mapping_approx2/embree/build -D TBB_DIR=/usr/lib/x86_64-linux-gnu/cmake/TBB -C ../compiler.cmake
+cmake .. -D CMAKE_BUILD_TYPE=Release -D embree_DIR=/home/sakakibara/photon_mapping_approx2/embree-3.13.5/build -D TBB_DIR=/usr/lib/x86_64-linux-gnu/cmake/TBB -C ../compiler.cmake
+
+
+
+
+
+
+/home/sakakibara/photon_mapping_approx2/embree-3.13.5/build/kernels/CMakeFiles/Export/lib/cmake/embree-3.13.5

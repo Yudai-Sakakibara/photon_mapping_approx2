@@ -7,7 +7,7 @@
 int main() {
   const int width = 512;
   const int height = 512;
-  const int n_samples = 256;
+  const int n_samples = 16;
   const int n_photons = 100000;
   const int n_estimation_global = 100;
   const float n_photons_caustics_multiplier = 100;
