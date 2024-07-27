@@ -10,6 +10,7 @@ SET(EMBREE_VERSION ${EMBREE_VERSION_MAJOR}.${EMBREE_VERSION_MINOR}.${EMBREE_VERS
 MATH(EXPR EMBREE_VERSION_NUMBER "10000*${EMBREE_VERSION_MAJOR} + 100*${EMBREE_VERSION_MINOR} + ${EMBREE_VERSION_PATCH}")
 SET(CPACK_RPM_PACKAGE_RELEASE 1)
 
+set(CMAKE_TRY_COMPILE_TARGET_TYPE "STATIC_LIBRARY") # added from https://stackoverflow.com/questions/71441226/cmake-cross-compilation-wont-skip-compiler-test?noredirect=1&lq=1
 PROJECT(embree${EMBREE_VERSION_MAJOR})
 
 CMAKE_MINIMUM_REQUIRED(VERSION 3.1.0)
@@ -83,6 +84,18 @@ MARK_AS_ADVANCED(CLEAR CMAKE_CXX_COMPILER)
 # compiler designated
 set(CMAKE_CXX_COMPILER "/home/sakakibara/opt/gcc/riscv64-elf/11.1/bin/riscv64-unknown-elf-g++" CACHE STRING "clang++ compiler" FORCE)
 
+# suppress further compiler checks
+set(CMAKE_C_COMPILER_WORKS 1)
+set(CMAKE_CXX_COMPILER_WORKS 1)
+project(embree${EMBREE_VERSION_MAJOR} NONE)
+set(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS "")
+set(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS "")
+SET(CMAKE_SYSTEM_NAME Gerenic)
+SET(CMAKE_SYSTEM_PROCESSOR arm)
+SET(CMAKE_CROSSCOMPILING 1)
+set(CMAKE_C_COMPILER_FORCED 1)
+set(CMAKE_CXX_COMPILER_FORCED 1)
+
 
 SET(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/common/cmake" ${CMAKE_MODULE_PATH})
 
@@ -95,7 +108,7 @@ IF (BUILD_DOC)
   ADD_SUBDIRECTORY(doc)
 ENDIF()
 
-OPTION(EMBREE_TUTORIALS    "Enable to build Embree tutorials" ON)
+OPTION(EMBREE_TUTORIALS    "Enable to build Embree tutorials" OFF) # modified
 
 ##############################################################
 # Embree configuration
@@ -116,7 +129,7 @@ ELSE()
   SET(EMBREE_LIB_TYPE SHARED)
 ENDIF()
 
-OPTION(EMBREE_ISPC_SUPPORT "Build Embree with support for ISPC applications." ON)
+OPTION(EMBREE_ISPC_SUPPORT "Build Embree with support for ISPC applications." OFF) # modified
 IF (EMSCRIPTEN)
   SET(EMBREE_ISPC_SUPPORT OFF CACHE BOOL "Build Embree with support for ISPC applications." FORCE)
 ENDIF()
@@ -488,9 +501,9 @@ IF (EMBREE_ISA_NEON2X)
 ENDIF()
 
 IF (EMBREE_ISA_SSE2)
-  ADD_DEFINITIONS(-DEMBREE_TARGET_SSE2)
+  #ADD_DEFINITIONS(-DEMBREE_TARGET_SSE2) # modified
   IF (NOT EMBREE_ARM)
-    LIST(APPEND ISPC_TARGETS "sse2")
+    #LIST(APPEND ISPC_TARGETS "sse2") # modified
   ENDIF()
   IF(NOT FLAGS_LOWEST)
     SET(ISA_LOWEST ${SSE2})

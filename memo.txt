@@ -18,7 +18,4 @@ cmake .. -D CMAKE_BUILD_TYPE=Release -D embree_DIR=/home/sakakibara/photon_mappi
 
 
 
-
-
-
-/home/sakakibara/photon_mapping_approx2/embree-3.13.5/build/kernels/CMakeFiles/Export/lib/cmake/embree-3.13.5
+sakakibara@DESKTOP-R8006QN:~/photon_mapping_approx2/embree-3.13.5/build$ cmake .. -D EMBREE_ISPC_SUPPORT=OFF -D glfw3_DIR=/usr/lib/x86_64-linux-gnu/cmake/glfw3
