@@ -12,7 +12,7 @@
 #if defined(__ARM_NEON)
 #include "../simd/arm/emulation.h"
 #else
-#include <immintrin.h>
+#include "../headers/immintrin.h" // modified
 #if defined(__EMSCRIPTEN__)
 #include "../simd/wasm/emulation.h"
 #endif

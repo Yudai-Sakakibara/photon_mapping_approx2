@@ -61,7 +61,7 @@
 #define ISA NEON
 #define ISA_STR "NEON"
 #else
-#error Unknown ISA
+//#error Unknown ISA // modified
 #endif
 
 namespace embree
