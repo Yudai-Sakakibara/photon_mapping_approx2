@@ -30,77 +30,77 @@
 #define __DISABLE_GENERAL_REGS_ONLY__
 #endif
 
-#include <ia32intrin.h>
+#include "ia32intrin.h"
 
 #ifndef __iamcu__
 
-#include <stddef.h>
+#include "stddef.h"
 
-#include <adxintrin.h>
+#include "adxintrin.h"
 
-#include <bmiintrin.h>
+#include "bmiintrin.h"
 
-#include <bmi2intrin.h>
+#include "bmi2intrin.h"
 
-#include <cetintrin.h>
+#include "cetintrin.h"
 
-#include <cldemoteintrin.h>
+#include "cldemoteintrin.h"
 
-#include <clflushoptintrin.h>
+#include "clflushoptintrin.h"
 
-#include <clwbintrin.h>
+#include "clwbintrin.h"
 
-#include <clzerointrin.h>
+#include "clzerointrin.h"
 
-#include <enqcmdintrin.h>
+#include "enqcmdintrin.h"
 
-#include <fxsrintrin.h>
+#include "fxsrintrin.h"
 
-#include <lzcntintrin.h>
+#include "lzcntintrin.h"
 
-#include <lwpintrin.h>
+#include "lwpintrin.h"
 
-#include <movdirintrin.h>
+#include "movdirintrin.h"
 
-#include <mwaitintrin.h>
+#include "mwaitintrin.h"
 
-#include <mwaitxintrin.h>
+#include "mwaitxintrin.h"
 
-#include <pconfigintrin.h>
+#include "pconfigintrin.h"
 
-#include <popcntintrin.h>
+#include "popcntintrin.h"
 
-#include <pkuintrin.h>
+#include "pkuintrin.h"
 
-#include <rdseedintrin.h>
+#include "rdseedintrin.h"
 
-#include <rtmintrin.h>
+#include "rtmintrin.h"
 
-#include <serializeintrin.h>
+#include "serializeintrin.h"
 
-#include <sgxintrin.h>
+#include "sgxintrin.h"
 
-#include <tbmintrin.h>
+#include "tbmintrin.h"
 
-#include <tsxldtrkintrin.h>
+#include "tsxldtrkintrin.h"
 
-#include <uintrintrin.h>
+#include "uintrintrin.h"
 
-#include <waitpkgintrin.h>
+#include "waitpkgintrin.h"
 
-#include <wbnoinvdintrin.h>
+#include "wbnoinvdintrin.h"
 
-#include <xsaveintrin.h>
+#include "xsaveintrin.h"
 
-#include <xsavecintrin.h>
+#include "xsavecintrin.h"
 
-#include <xsaveoptintrin.h>
+#include "xsaveoptintrin.h"
 
-#include <xsavesintrin.h>
+#include "xsavesintrin.h"
 
-#include <xtestintrin.h>
+#include "xtestintrin.h"
 
-#include <hresetintrin.h>
+#include "hresetintrin.h"
 
 extern __inline void
 __attribute__((__gnu_inline__, __always_inline__, __artificial__))

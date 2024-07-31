@@ -695,4 +695,3 @@ namespace embree
   }
 }
 #endif
-

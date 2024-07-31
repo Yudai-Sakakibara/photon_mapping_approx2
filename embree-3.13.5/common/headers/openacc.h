@@ -32,7 +32,7 @@
 /* The OpenACC standard is silent on whether or not including <openacc.h>
    might or must not include other header files.  We chose to include
    some.  */
-#include <stddef.h>
+#include "stddef.h"
 
 #ifdef __cplusplus
 extern "C" {

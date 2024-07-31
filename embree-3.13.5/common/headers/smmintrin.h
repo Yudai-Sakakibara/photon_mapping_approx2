@@ -29,7 +29,7 @@
 
 /* We need definitions from the SSSE3, SSE3, SSE2 and SSE header
    files.  */
-#include <tmmintrin.h>
+#include "tmmintrin.h"
 
 #ifndef __SSE4_1__
 #pragma GCC push_options
@@ -809,7 +809,7 @@ _mm_cmpgt_epi64 (__m128i __X, __m128i __Y)
 #pragma GCC pop_options
 #endif /* __DISABLE_SSE4_1__ */
 
-#include <popcntintrin.h>
+#include "popcntintrin.h"
 
 #ifndef __SSE4_1__
 #pragma GCC push_options

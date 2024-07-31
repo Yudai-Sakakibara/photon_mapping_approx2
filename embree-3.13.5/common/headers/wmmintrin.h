@@ -28,7 +28,7 @@
 #define _WMMINTRIN_H_INCLUDED
 
 /* We need definitions from the SSE2 header file.  */
-#include <emmintrin.h>
+#include "emmintrin.h"
 
 /* AES */
 

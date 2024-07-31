@@ -28,8 +28,8 @@
 #define _PMMINTRIN_H_INCLUDED
 
 /* We need definitions from the SSE2 and SSE header files*/
-#include <emmintrin.h>
-#include <mwaitintrin.h>
+#include "emmintrin.h"
+#include "mwaitintrin.h"
 
 #ifndef __SSE3__
 #pragma GCC push_options

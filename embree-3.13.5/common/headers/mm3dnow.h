@@ -27,8 +27,8 @@
 #ifndef _MM3DNOW_H_INCLUDED
 #define _MM3DNOW_H_INCLUDED
 
-#include <mmintrin.h>
-#include <prfchwintrin.h>
+#include "mmintrin.h"
+#include "prfchwintrin.h"
 
 #if defined __x86_64__ && !defined __SSE__ || !defined __3dNOW__
 #pragma GCC push_options

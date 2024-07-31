@@ -28,7 +28,7 @@
 #define _TMMINTRIN_H_INCLUDED
 
 /* We need definitions from the SSE3, SSE2 and SSE header files*/
-#include <pmmintrin.h>
+#include "pmmintrin.h"
 
 #ifndef __SSSE3__
 #pragma GCC push_options

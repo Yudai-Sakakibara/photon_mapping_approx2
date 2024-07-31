@@ -29,7 +29,7 @@
 #define _FMA4INTRIN_H_INCLUDED
 
 /* We need definitions from the SSE4A, SSE3, SSE2 and SSE header files.  */
-#include <ammintrin.h>
+#include "ammintrin.h"
 
 #ifndef __FMA4__
 #pragma GCC push_options

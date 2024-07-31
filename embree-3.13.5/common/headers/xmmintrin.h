@@ -28,10 +28,10 @@
 #define _XMMINTRIN_H_INCLUDED
 
 /* We need type definitions from the MMX header file.  */
-#include <mmintrin.h>
+#include "mmintrin.h"
 
 /* Get _mm_malloc () and _mm_free ().  */
-#include <mm_malloc.h>
+#include "mm_malloc.h"
 
 /* Constants for use with _mm_prefetch.  */
 enum _mm_hint
@@ -1313,7 +1313,7 @@ do {									\
 } while (0)
 
 /* For backward source compatibility.  */
-# include <emmintrin.h>
+#include "emmintrin.h"
 
 #ifdef __DISABLE_SSE__
 #undef __DISABLE_SSE__

@@ -28,7 +28,7 @@
 #define _EMMINTRIN_H_INCLUDED
 
 /* We need definitions from the SSE header files*/
-#include <xmmintrin.h>
+#include "xmmintrin.h"
 
 #ifndef __SSE2__
 #pragma GCC push_options

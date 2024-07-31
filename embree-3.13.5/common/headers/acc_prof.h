@@ -34,7 +34,7 @@
    Interface explicitly makes use of, for example, <openacc.h>'s
    'acc_device_t', we supposedly are to '#include' that file here.  */
 
-#include <openacc.h>
+#include "openacc.h"
 
 
 #ifdef __cplusplus

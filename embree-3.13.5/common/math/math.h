@@ -11,9 +11,9 @@
 #if defined(__ARM_NEON)
 #include "../simd/arm/emulation.h"
 #else
-#include <emmintrin.h>
-#include <xmmintrin.h>
-#include <immintrin.h>
+#include "../headers/emmintrin.h"
+#include "../headers/xmmintrin.h"
+#include "../headers/immintrin.h"
 #endif
 
 #if defined(__WIN32__)

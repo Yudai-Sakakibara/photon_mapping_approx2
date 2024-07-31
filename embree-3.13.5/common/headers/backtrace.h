@@ -33,18 +33,18 @@ POSSIBILITY OF SUCH DAMAGE.  */
 #ifndef BACKTRACE_H
 #define BACKTRACE_H
 
-#include <stddef.h>
+#include "stddef.h"
 #include <stdio.h>
 
 /* We want to get a definition for uintptr_t, but we still care about
    systems that don't have <stdint.h>.  */
 #if defined(__GLIBC__) && __GLIBC__ >= 2
 
-#include <stdint.h>
+#include "stdint.h"
 
 #elif defined(HAVE_STDINT_H)
 
-#include <stdint.h>
+#include "stdint.h"
 
 #else
 

@@ -16,7 +16,7 @@
 #include <fstream>
 #include <string>
 #include <cstring>
-#include <stdint.h>
+#include "../headers/stdint.h"
 #include <functional>
 
 ////////////////////////////////////////////////////////////////////////////////

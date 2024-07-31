@@ -24,18 +24,18 @@
 #ifndef _X86INTRIN_H_INCLUDED
 #define _X86INTRIN_H_INCLUDED
 
-#include <x86gprintrin.h>
+#include "x86gprintrin.h"
 
 #ifndef __iamcu__
 
 /* For including AVX instructions */
-#include <immintrin.h>
+#include "immintrin.h"
 
-#include <mm3dnow.h>
+#include "mm3dnow.h"
 
-#include <fma4intrin.h>
+#include "fma4intrin.h"
 
-#include <xopintrin.h>
+#include "xopintrin.h"
 
 #endif /* __iamcu__ */
 

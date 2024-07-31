@@ -28,6 +28,6 @@
 #define _NMMINTRIN_H_INCLUDED
 
 /* We just include SSE4.1 header file.  */
-#include <smmintrin.h>
+#include "smmintrin.h"
 
 #endif /* _NMMINTRIN_H_INCLUDED */

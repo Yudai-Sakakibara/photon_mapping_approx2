@@ -28,7 +28,7 @@
 #ifndef _XOPMMINTRIN_H_INCLUDED
 #define _XOPMMINTRIN_H_INCLUDED
 
-#include <fma4intrin.h>
+#include "fma4intrin.h"
 
 #ifndef __XOP__
 #pragma GCC push_options
